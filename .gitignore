@@ -1,0 +1,4 @@
+.vagrant
+logs
+node_modules
+.idea

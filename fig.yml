@@ -1,0 +1,11 @@
+nodejs:
+  build: .
+nginx:
+  build: resources/nginx
+  volumes:
+    - /vagrant/logs/nginx:/var/log/nginx
+    - /vagrant/web:/srv/http
+  ports:
+    - "80:80"
+  links:
+    - nodejs:node
