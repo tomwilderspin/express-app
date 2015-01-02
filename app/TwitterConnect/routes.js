@@ -7,7 +7,7 @@ function getFollowers(req, res) {
 }
 
 function setup(app) {
-    app.get('/followers/:id', getFollowers());
+    app.get('/followers/:id', getFollowers);
 }
 
 module.exports = setup;
