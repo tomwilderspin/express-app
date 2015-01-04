@@ -1,10 +1,16 @@
 
-
 var express = require('express');
+var config = require('app/config');
 var app = express();
 
 
-// app-wide utils go here [logging, etc]
+//template engine
+
+app.set("views", __dirname + '/view_templates');
+
+app.set("view engine", "jade");
+
+// app-wide services go here [logger, etc]
 
 
 //register routes [with slim controller methods]
@@ -22,7 +28,7 @@ var app = express();
 
 
 //server process
-app.listen(8888, function(error) {
+app.listen(config.express.port, function(error) {
 
     if (error) {
         console.log('unable to listen for connections: %s', error.toString());

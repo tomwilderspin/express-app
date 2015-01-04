@@ -2,7 +2,10 @@
 
 function getFollowers(req, res) {
 
-    res.send('you have 5 followers');
+    res.render('followers',{
+        pageTitle:      'user followers',
+        totalFollowers: 12
+    });
 
 }
 
