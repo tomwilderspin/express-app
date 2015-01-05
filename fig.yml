@@ -2,8 +2,8 @@ nodejs:
   build: .
   environment:
     -NODE_PORT: 8888
-    -TWIT_PRIVATE_KEY: 1234
-    -TWIT_PUBLIC_KEY: 5678
+    -TWIT_PRI_KEY: 1234
+    -TWIT_PUB_KEY: 5678
 nginx:
   build: resources/nginx
   volumes:
