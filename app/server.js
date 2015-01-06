@@ -19,7 +19,7 @@ app.set("view engine", "jade");
     'app/TwitterConnect/routes'
     //'app/Auth/routes'
 ].forEach(function (routePath) {
-        require(routePath)(app);
+        require(routePath)(app, config.twitter);
     });
 
 
