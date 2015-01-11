@@ -7,7 +7,7 @@ function createEncodedCredentails(publicKey, privateKey)
     return new Buffer(concatenatedKeys).toString('Base64');
 }
 
-function getToken(requestClient, credentials)
+function getToken(requestClient, credentials, callback)
 {
     var options = {
         headers: {
@@ -19,22 +19,22 @@ function getToken(requestClient, credentials)
         }
     };
 
-    var token = requestClient.post(
+    requestClient.post(
         'https://api.twitter.com/oauth2/token',
-        options,
-        function(error, res, body){
-            var responseBody = JSON.parse(body);
-            return responseBody.access_token;
-        });
+        options, function(error, response, body){
 
-    return token;
+            var token = JSON.parse(body).access_token;
+
+            callback(token);
+        });
 }
 
-function setup(publicKey, privateKey)
+
+function setup(publicKey, privateKey, cb)
 {
     var credentials = createEncodedCredentails(publicKey, privateKey);
 
-    return getToken(requestClient, credentials);
+    getToken(requestClient, credentials, cb);
 
 }
 

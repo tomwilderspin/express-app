@@ -1,13 +1,16 @@
 
 var getBearerToken = require('app/TwitterAPI/OAuth/getBearerToken');
 var creds = {};
+
 function getFollowers(req, res) {
 
-    var accessToken = getBearerToken(creds.publicKey, creds.privateKey);
+    getBearerToken(creds.publicKey, creds.privateKey, function(token){
 
-    res.render('followers',{
-        pageTitle:      'user followers',
-        totalFollowers: accessToken
+        res.render('followers', {
+            pageTitle:      'user followers',
+            totalFollowers: token
+        });
+
     });
 
 }
